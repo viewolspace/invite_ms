@@ -12,12 +12,12 @@
 	</settings>
 
 	<typeAliases>
-		<typeAlias alias="SysPermission" type="com.viewol.sys.pojo.SysPermission" />
-		<typeAlias alias="SysRole" type="com.viewol.sys.pojo.SysRole" />
-		<typeAlias alias="SysRolePermission" type="com.viewol.sys.pojo.SysRolePermission" />
-		<typeAlias alias="SysUser" type="com.viewol.sys.pojo.SysUser" />
-		<typeAlias alias="SysUserRole" type="com.viewol.sys.pojo.SysUserRole" />
-		<typeAlias alias="SysLog" type="com.viewol.sys.pojo.SysLog" />
+		<typeAlias alias="SysPermission" type="com.ms.sys.pojo.SysPermission" />
+		<typeAlias alias="SysRole" type="com.ms.sys.pojo.SysRole" />
+		<typeAlias alias="SysRolePermission" type="com.ms.sys.pojo.SysRolePermission" />
+		<typeAlias alias="SysUser" type="com.ms.sys.pojo.SysUser" />
+		<typeAlias alias="SysUserRole" type="com.ms.sys.pojo.SysUserRole" />
+		<typeAlias alias="SysLog" type="com.ms.sys.pojo.SysLog" />
 	</typeAliases>
 	
 	<plugins>

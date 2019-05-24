@@ -69,9 +69,9 @@
         <property name="cacheManager" ref="ehCacheManager" />
     </bean>
 
-    <bean id="shiroManager" class="com.viewol.shiro.service.impl.ShiroManagerImpl"/>
-    <bean id="login" class="com.viewol.shiro.filter.LoginFilter"/>
-    <bean id="permission" class="com.viewol.shiro.filter.PermissionFilter"/>
+    <bean id="shiroManager" class="com.ms.shiro.service.impl.ShiroManagerImpl"/>
+    <bean id="login" class="com.ms.shiro.filter.LoginFilter"/>
+    <bean id="permission" class="com.ms.shiro.filter.PermissionFilter"/>
 
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager" />
@@ -90,7 +90,7 @@
 
     </bean>
 
-    <bean id="myShiroRealm" class="com.viewol.shiro.token.MyShiroRealm"/>
+    <bean id="myShiroRealm" class="com.ms.shiro.token.MyShiroRealm"/>
 
     <!-- shiro-all.jar -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
