@@ -43,17 +43,12 @@ public class SysRoleServiceImpl implements SysRoleService {
 	}
 
 	@Override
-	public List<SysRole> listALLSysRole(int appId) {
-		return sysRoleDAO.listALLSysRole(appId);
+	public PageHolder<SysRole> querySysRoleByPage(String name, int pageIndex, int pageSize) {
+		return sysRoleDAO.querySysRoleByPage(name, pageIndex, pageSize);
 	}
 
 	@Override
-	public PageHolder<SysRole> querySysRoleByPage(int appId, String name, int pageIndex, int pageSize) {
-		return sysRoleDAO.querySysRoleByPage(appId, name, pageIndex, pageSize);
-	}
-
-	@Override
-	public int relateApp(int id, int appId) {
-		return sysRoleDAO.relateApp(id, appId);
+	public List<SysRole> listALLSysRole() {
+		return sysRoleDAO.listALLSysRole();
 	}
 }

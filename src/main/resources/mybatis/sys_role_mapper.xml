@@ -6,14 +6,13 @@
         <result property="name" column="name"/>
         <result property="remark" column="remark"/>
         <result property="createTime" column="create_time"/>
-        <result property="appId" column="app_id"/>
     </resultMap>
 
     <insert id="insert" parameterType="SysRole">
         insert into sys_role
-        (name,remark,create_time,code,app_id)
+        (name,remark,create_time,code)
         VALUES
-        (#{name},#{remark},#{createTime},#{code},#{appId})
+        (#{name},#{remark},#{createTime},#{code})
         <selectKey resultType="int" keyProperty="id">
             select LAST_INSERT_ID() AS id
         </selectKey>
@@ -28,27 +27,16 @@
 		set name=#{name}, remark=#{remark}, code=#{code} where id=#{id}
 	</update>
 
-    <update id="relateApp" parameterType="Map">
-        update sys_role
-        set app_id=#{appId} where id=#{id}
-    </update>
-
     <select id="select" parameterType="int" resultMap="SysRoleResultMap">
-        select id, name, remark, create_time, code, app_id from sys_role where id=#{id}
+        select id, name, remark, create_time, code from sys_role where id=#{id}
     </select>
 
-    <select id="find_all" resultMap="SysRoleResultMap" parameterType="java.lang.Integer">
-        select id, name, remark, create_time, code, app_id from sys_role
-        <trim prefix="WHERE" prefixOverrides="AND|OR">
-            <if test="_parameter !=null and _parameter >0">
-                AND app_id = #{appId}
-            </if>
-        </trim>
+    <select id="select_all" resultMap="SysRoleResultMap">
+        select id, name, remark, create_time, code from sys_role
     </select>
-
 
     <sql id="sql_show">
-		select id, name, remark, create_time, code, app_id
+		select id, name, remark, create_time, code
 	</sql>
 
     <sql id="sql_where">
@@ -56,9 +44,6 @@
         <trim prefix="where" prefixOverrides="AND|OR">
             <if test=" name != null and name != '' ">
                 AND name = #{name}
-            </if>
-            <if test=" appId !=null and appId>0 ">
-                AND app_id = #{appId}
             </if>
         </trim>
     </sql>

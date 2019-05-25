@@ -5,13 +5,13 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import javax.annotation.Resource;
 
-public class ViewolMsDAO<T> extends SqlDAO<T> {
-	public ViewolMsDAO() {
+public class InviteMsDAO<T> extends SqlDAO<T> {
+	public InviteMsDAO() {
 		super();
 		setUseSimpleName(true);
 	}
 
-	@Resource(name = "viewolMsSessionFactory")
+	@Resource(name = "inviteMsSessionFactory")
 	@Override
 	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
 		super.setSqlSessionFactory(sqlSessionFactory);

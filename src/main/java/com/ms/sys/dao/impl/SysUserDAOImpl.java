@@ -1,7 +1,7 @@
 package com.ms.sys.dao.impl;
 
 import com.youguu.core.util.PageHolder;
-import com.ms.sys.base.ViewolMsDAO;
+import com.ms.sys.base.InviteMsDAO;
 import com.ms.sys.dao.SysUserDAO;
 import com.ms.sys.pojo.SysUser;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ import java.util.Map;
  * Created by leo on 2017/11/23.
  */
 @Repository
-public class SysUserDAOImpl extends ViewolMsDAO<SysUser> implements SysUserDAO {
+public class SysUserDAOImpl extends InviteMsDAO<SysUser> implements SysUserDAO {
 	@Override
 	public int saveSysUser(SysUser sysUser) {
 		this.insert(sysUser);
@@ -60,11 +60,10 @@ public class SysUserDAOImpl extends ViewolMsDAO<SysUser> implements SysUserDAO {
 	}
 
 	@Override
-	public PageHolder<SysUser> querySysUserByPage(int appId, int userId, String realName, int pageIndex, int pageSize) {
+	public PageHolder<SysUser> querySysUserByPage(int userId, String realName, int pageIndex, int pageSize) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("userId", userId);
 		map.put("realName", realName);
-		map.put("appId", appId);
 		return this.pagedQuery("querySysUserByPage", map, pageIndex, pageSize);
 	}
 }

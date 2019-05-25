@@ -15,7 +15,6 @@ public class SysLog {
 	private String methodDesc;
 	private String operContent;
 	private Date createtime;
-	private int appId;
 
 	public Integer getId() {
 		return id;
@@ -89,11 +88,4 @@ public class SysLog {
 		this.createtime = createtime;
 	}
 
-	public int getAppId() {
-		return appId;
-	}
-
-	public void setAppId(int appId) {
-		this.appId = appId;
-	}
 }

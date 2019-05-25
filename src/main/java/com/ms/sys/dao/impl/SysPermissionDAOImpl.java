@@ -1,6 +1,6 @@
 package com.ms.sys.dao.impl;
 
-import com.ms.sys.base.ViewolMsDAO;
+import com.ms.sys.base.InviteMsDAO;
 import com.ms.sys.dao.SysPermissionDAO;
 import com.ms.sys.pojo.SysPermission;
 import org.springframework.stereotype.Repository;
@@ -13,7 +13,7 @@ import java.util.Map;
  * Created by leo on 2017/11/23.
  */
 @Repository
-public class SysPermissionDAOImpl extends ViewolMsDAO<SysPermission> implements SysPermissionDAO {
+public class SysPermissionDAOImpl extends InviteMsDAO<SysPermission> implements SysPermissionDAO {
 	@Override
 	public int saveSysPermission(SysPermission permission) {
 		return this.insert(permission);
@@ -50,13 +50,5 @@ public class SysPermissionDAOImpl extends ViewolMsDAO<SysPermission> implements 
 	@Override
 	public List<SysPermission> findSysPermissionByRoleid(int roleId) {
 		return this.findBy("select_user_permission_by_rid", roleId);
-	}
-
-	@Override
-	public List<SysPermission> findSysPermissionByAppid(int roleId, int appId) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("appId", appId);
-		map.put("roleId", roleId);
-		return this.findBy("select_user_permission_by_appid", map);
 	}
 }

@@ -11,21 +11,20 @@
         <result property="methodDesc" column="method_desc"/>
         <result property="operContent" column="oper_content"/>
         <result property="createtime" column="create_time"/>
-        <result property="appId" column="app_id"/>
     </resultMap>
 
     <insert id="insert" parameterType="SysLog">
         insert into sys_log
-        (ip_address,oper_id,user_name,module_name,method_name,method_desc,oper_content,create_time,app_id)
+        (ip_address,oper_id,user_name,module_name,method_name,method_desc,oper_content,create_time)
         VALUES
-        (#{ipAddress},#{operId},#{userName},#{moduleName},#{methodName},#{methodDesc},#{operContent},#{createtime},#{appId})
+        (#{ipAddress},#{operId},#{userName},#{moduleName},#{methodName},#{methodDesc},#{operContent},#{createtime})
         <selectKey resultType="int" keyProperty="id">
             select LAST_INSERT_ID() AS id
         </selectKey>
     </insert>
 
     <sql id="sql_show">
-		select id,ip_address,oper_id,user_name,module_name,method_name,method_desc,oper_content,create_time,app_id
+		select id,ip_address,oper_id,user_name,module_name,method_name,method_desc,oper_content,create_time
 	</sql>
 
     <sql id="sql_where">
@@ -45,9 +44,6 @@
             </if>
             <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
                 AND create_time BETWEEN #{startDate} AND #{endDate}
-            </if>
-            <if test="appId > 0 ">
-                AND app_id = #{appId}
             </if>
         </trim>
     </sql>

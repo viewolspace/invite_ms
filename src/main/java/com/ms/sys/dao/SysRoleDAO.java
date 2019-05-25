@@ -17,10 +17,8 @@ public interface SysRoleDAO {
 
 	SysRole getSysRole(int id);
 
-	List<SysRole> listALLSysRole(int appId);
+	PageHolder<SysRole> querySysRoleByPage(String name, int pageIndex, int pageSize);
 
-	PageHolder<SysRole> querySysRoleByPage(int appId, String name, int pageIndex, int pageSize);
-
-	int relateApp(int id, int appId);
+	List<SysRole> listALLSysRole();
 
 }

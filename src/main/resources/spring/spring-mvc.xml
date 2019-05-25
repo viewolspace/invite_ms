@@ -9,7 +9,7 @@
     http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
     <!-- 注解扫描包 -->
-    <context:component-scan base-package="com.ms"/>
+    <context:component-scan base-package="com.ms*"/>
     <!-- 开启注解 -->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="false">
@@ -40,7 +40,7 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
-    <!--<bean id="exceptionResolver" class="com.mseption.MyExceptionResolver"></bean>-->
+    <!--<bean id="exceptionResolver" class="com.ms.exception.MyExceptionResolver"></bean>-->
 
     <!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

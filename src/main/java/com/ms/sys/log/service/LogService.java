@@ -97,7 +97,6 @@ public class LogService implements Ordered {
 		}
 
 		sysLog.setCreatetime(new Date());
-		sysLog.setAppId(TokenManager.getAppId());
 		sysLogDAO.saveSysLog(sysLog);
 		return point.proceed();
 	}

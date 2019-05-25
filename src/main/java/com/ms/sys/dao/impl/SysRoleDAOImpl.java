@@ -1,7 +1,7 @@
 package com.ms.sys.dao.impl;
 
 import com.youguu.core.util.PageHolder;
-import com.ms.sys.base.ViewolMsDAO;
+import com.ms.sys.base.InviteMsDAO;
 import com.ms.sys.dao.SysRoleDAO;
 import com.ms.sys.pojo.SysRole;
 import org.springframework.stereotype.Repository;
@@ -14,7 +14,7 @@ import java.util.Map;
  * Created by leo on 2017/11/23.
  */
 @Repository
-public class SysRoleDAOImpl extends ViewolMsDAO<SysRole> implements SysRoleDAO {
+public class SysRoleDAOImpl extends InviteMsDAO<SysRole> implements SysRoleDAO {
 	@Override
 	public int saveSysRole(SysRole role) {
 		this.insert(role);
@@ -37,23 +37,15 @@ public class SysRoleDAOImpl extends ViewolMsDAO<SysRole> implements SysRoleDAO {
 	}
 
 	@Override
-	public List<SysRole> listALLSysRole(int appId) {
-		return this.findBy("find_all", appId);
-	}
-
-	@Override
-	public PageHolder<SysRole> querySysRoleByPage(int appId, String name, int pageIndex, int pageSize) {
+	public PageHolder<SysRole> querySysRoleByPage(String name, int pageIndex, int pageSize) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("name", name);
-		map.put("appId", appId);
 		return this.pagedQuery("querySysRoleByPage", map, pageIndex, pageSize);
 	}
 
 	@Override
-	public int relateApp(int id, int appId) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("id", id);
-		map.put("appId", appId);
-		return this.updateBy("relateApp", map);
+	public List<SysRole> listALLSysRole() {
+		return this.getAll();
 	}
+
 }

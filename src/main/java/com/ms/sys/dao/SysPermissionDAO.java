@@ -23,6 +23,4 @@ public interface SysPermissionDAO {
 
 	List<SysPermission> findSysPermissionByRoleid(int roleId);
 
-	public List<SysPermission> findSysPermissionByAppid(int roleId, int appId);
-
 }

@@ -1,12 +1,12 @@
 package com.ms.sys.service;
 
-import com.youguu.core.util.PageHolder;
 import com.ms.sys.pojo.SysLog;
+import com.youguu.core.util.PageHolder;
 
 /**
  * Created by leo on 2017/12/18.
  */
 public interface SysLogService {
-	PageHolder<SysLog> listSysLogByPage(String moduleName, String methodName, String userName, String ip, String startDate,
-										String endDate,  int appId, int pageIndex, int pageSize);
+    PageHolder<SysLog> listSysLogByPage(String moduleName, String methodName, String userName, String ip, String startDate,
+                                        String endDate, int pageIndex, int pageSize);
 }

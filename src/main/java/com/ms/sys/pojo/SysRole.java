@@ -15,7 +15,6 @@ public class SysRole implements Serializable {
 	private String code;//角色编码，页面判断表格显示列使用
 	private String remark;//角色描述
 	private Date createTime;
-	private int appId;
 
 	private List<Integer> permissions = new LinkedList<>();//权限列表
 
@@ -67,11 +66,4 @@ public class SysRole implements Serializable {
 		this.permissions = permissions;
 	}
 
-	public int getAppId() {
-		return appId;
-	}
-
-	public void setAppId(int appId) {
-		this.appId = appId;
-	}
 }

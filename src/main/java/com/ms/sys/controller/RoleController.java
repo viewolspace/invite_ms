@@ -48,7 +48,6 @@ public class RoleController {
 		sysRole.setCode(code);
 		sysRole.setRemark(remark);
 		sysRole.setCreateTime(new Date());
-		sysRole.setAppId(TokenManager.getAppId());
 
 		int result = sysRoleService.saveSysRole(sysRole);
 
@@ -159,7 +158,7 @@ public class RoleController {
 
 		GridBaseResponse rs = new GridBaseResponse();
 //		System.out.println(TokenManager.getAppId());
-		PageHolder<SysRole> pageHolder = sysRoleService.querySysRoleByPage(TokenManager.getAppId(),null, 1, 50);
+		PageHolder<SysRole> pageHolder = sysRoleService.querySysRoleByPage(null, 1, 50);
 
 		List<SysRole> roleList = pageHolder.getList();
 
@@ -186,7 +185,7 @@ public class RoleController {
 
 		RoleComboResponse rs = new RoleComboResponse();
 
-		List<SysRole> roleList = sysRoleService.listALLSysRole(TokenManager.getAppId());
+		List<SysRole> roleList = sysRoleService.listALLSysRole();
 		if(null == roleList){
 			rs.setStatus(false);
 			rs.setMsg("加载角色下拉框异常");
@@ -204,32 +203,6 @@ public class RoleController {
 		rs.setStatus(true);
 		rs.setMsg("ok");
 		rs.setData(roleSelect);
-		return rs;
-	}
-
-	/**
-	 * 关联APP应用
-	 * @param id
-	 * @param appId
-	 * @return
-	 */
-	@RequestMapping(value = "/relateApp", method = RequestMethod.POST)
-	@ResponseBody
-	@MethodLog(module = Constants.SYS_PERMISSION, desc = "关联应用")
-	@Repeat
-	public BaseResponse relateApp(int id, int appId) {
-		BaseResponse rs = new BaseResponse();
-
-		int result = sysRoleService.relateApp(id, appId);
-
-		if(result>0){
-			rs.setStatus(true);
-			rs.setMsg("修改成功");
-		} else {
-			rs.setStatus(false);
-			rs.setMsg("修改失败");
-		}
-
 		return rs;
 	}
 }
