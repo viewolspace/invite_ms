@@ -1,13 +1,22 @@
 package com.ms.common;
 
 public class UploadResponse extends BaseResponse {
-    private String imageUrl;
+    private int total;
+    private int success;
 
-    public String getImageUrl() {
-        return imageUrl;
+    public int getTotal() {
+        return total;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public int getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(int success) {
+        this.success = success;
     }
 }

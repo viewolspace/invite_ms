@@ -1,22 +1,28 @@
 package com.ms.lottery;
 
-import com.ms.common.BaseResponse;
 import com.ms.common.GridBaseResponse;
+import com.ms.common.UploadResponse;
+import com.ms.pojo.User;
 import com.ms.pojo.UserDetail;
 import com.ms.pojo.UserInvite;
 import com.ms.pojo.query.UserDetailQuery;
 import com.ms.pojo.query.UserInviteQuery;
 import com.ms.service.IUserService;
 import com.ms.service.IUserSummaryService;
-import com.ms.sys.interceptor.Repeat;
 import com.youguu.core.util.PageHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("lottery")
@@ -54,7 +60,9 @@ public class LotteryController {
         rs.setMsg("ok");
 
         UserInviteQuery query = new UserInviteQuery();
-        query.setUid(uid);
+        if (uid > 0) {
+            query.setUid(uid);
+        }
         query.setOpenId(openId);
         query.setNickName(nickName);
         query.setInviteOpenId(inviteOpenId);
@@ -89,7 +97,7 @@ public class LotteryController {
     public GridBaseResponse queryUserDetail(@RequestParam(value = "uid", defaultValue = "0") int uid,
                                             @RequestParam(value = "openId", defaultValue = "") String openId,
                                             @RequestParam(value = "thirdId", defaultValue = "") String thirdId,
-                                            @RequestParam(value = "prize", defaultValue = "") int prize,
+                                            @RequestParam(value = "prize", defaultValue = "0") int prize,
                                             @RequestParam(value = "nickName", defaultValue = "") String nickName,
                                             @RequestParam(value = "page", defaultValue = "1") int page,
                                             @RequestParam(value = "limit", defaultValue = "10") int limit) {
@@ -99,11 +107,15 @@ public class LotteryController {
         rs.setMsg("ok");
 
         UserDetailQuery query = new UserDetailQuery();
-        query.setUid(uid);
+        if (uid > 0) {
+            query.setUid(uid);
+        }
+        if (prize > 0) {
+            query.setPrize(prize);
+        }
         query.setOpenId(openId);
         query.setNickName(nickName);
         query.setThirdId(thirdId);
-        query.setPrize(prize);
         query.setPageIndex(page);
         query.setPageSize(limit);
         PageHolder<UserDetail> pageHolder = userSummaryService.queryUserDetail(query);
@@ -119,9 +131,46 @@ public class LotteryController {
 
     @RequestMapping(value = "/importData", method = RequestMethod.POST)
     @ResponseBody
-    @Repeat
-    public BaseResponse importData(String old_password, String new_password, String confirm_password) {
-        BaseResponse rs = new BaseResponse();
+    public UploadResponse importData(@RequestParam(value = "file", required = false) MultipartFile file) {
+        UploadResponse rs = new UploadResponse();
+
+        if (null != file) {
+            try {
+                InputStream inputStream = file.getInputStream();
+
+                InputStreamReader reader = new InputStreamReader(inputStream, "UTF-8"); // 建立一个输入流对象reader
+                BufferedReader br = new BufferedReader(reader); // 建立一个对象，它把文件内容转成计算机能读懂的语言
+                List<String> openIdList = new ArrayList<>();
+                openIdList.add(br.readLine());
+                while (br.ready()) {
+                    openIdList.add(br.readLine());
+                }
+
+                int success = 0;
+                for (String openId : openIdList) {
+                    User user = userService.getUserByOpenId(openId);
+                    if(null == user){
+                        continue;
+                    }
+                    int count = userService.updateUserCommit(user.getUid());
+                    if(count>0){
+                        success ++;
+                    }
+                }
+
+                rs.setTotal(openIdList.size());
+                rs.setSuccess(success);
+
+                rs.setStatus(true);
+                rs.setMsg("上传成功");
+            } catch (Exception e) {
+                rs.setStatus(false);
+                rs.setMsg("服务器异常");
+            }
+        } else {
+            rs.setStatus(false);
+            rs.setMsg("文件为空");
+        }
 
         return rs;
     }

@@ -56,13 +56,8 @@ function registeModule(window,modulesYouWanted,otherModules) {
 			'login-api':'api/login-api',
 			'role&authority-api':'api/role&authority-api',
 			'user-api':'api/user-api',
-			'category-api':'api/category-api',
-            'exhibition-api':'api/exhibition-api',
-            'exhibitor-api':'api/exhibitor-api',
-            'same-reco-api':'api/same-reco-api',
-            'schedule-api':'api/schedule-api',
-            'buser-api':'api/buser-api',
-            'fuser-api':'api/fuser-api',
+			'invite-api':'api/invite-api',
+            'lottery-api':'api/lottery-api',
 			'select-api':'api/select-api'
 		}
 

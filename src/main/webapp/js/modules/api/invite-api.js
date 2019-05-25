@@ -1,5 +1,5 @@
 /**
- * 业务员管理api
+ * 邀请好友api
  */
 var requireModules = [
     'base-url'
@@ -11,14 +11,18 @@ layui.define('base-url', function (exports) {
     var baseApi = layui['base-url'];
 
     var url = {
-        namespace: '../buser/',
-        "bUserList": {
-            url: "bUserList.do",
+        namespace: '../lottery/',
+        "queryUserInvite": {
+            url: "queryUserInvite.do",
+            type: "POST"
+        },
+        "importData": {
+            url: "importData.do",
             type: "POST"
         }
     }
 
     var result = $.extend({}, baseApi, url);
 
-    exports('buser-api', result);
+    exports('invite-api', result);
 });

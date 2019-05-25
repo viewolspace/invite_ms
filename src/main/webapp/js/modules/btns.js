@@ -41,6 +41,11 @@ layui.define(function(exports) {
             icon: '&#xe61e;',
             name: '导出'
         },
+        'import': {
+            className: baseBtnClass + 'layui-btn-normal import',
+            icon: '&#xe61e;',
+            name: '导入'
+        },
         'copy': {
             className: baseBtnClass + 'layui-btn-normal copy',
             icon: '&#xe630;',
@@ -119,89 +124,11 @@ layui.define(function(exports) {
             name: '查看',
             event: 'row-view'
         },
-        'row-reco-layui': {
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe642;',
-            name: '推荐',
-            event: 'row-reco'
-        },
-        'row-review-layui': {
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe605;',
-            name: '审核',
-            event: 'row-review'
-        },
-        'row-cancel-reco-layui': {
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe642;',
-            name: '取消推荐',
-            event: 'row-cancel-reco'
-        },
-        'row-freeze-layui':{
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe615;',
-            name: '冻结',
-            event: 'row-freeze'
-        },
-        'row-unfreeze-layui':{
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe615;',
-            name: '恢复',
-            event: 'row-unfreeze'
-        },
-        'row-home-reco-layui': {
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe642;',
-            name: '首页推荐',
-            event: 'row-home-reco'
-        },
-        'row-same-reco-layui': {
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe642;',
-            name: '同类推荐',
-            event: 'row-same-reco'
-        },
-        'row-cancel-home-reco-layui': {
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe642;',
-            name: '取消首页推荐',
-            event: 'row-cancel-home-reco'
-        },
-        'row-cancel-same-reco-layui': {
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe642;',
-            name: '取消同类推荐',
-            event: 'row-cancel-same-reco'
-        },
-        'row-up-layui': {
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe642;',
-            name: '上架',
-            event: 'row-up'
-        },
-        'row-down-layui': {
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe642;',
-            name: '下架',
-            event: 'row-down'
-        },
         'row-reset-pwd-layui': {
             className: baseBtnClass + 'layui-btn-danger layui-btn-xs',
             icon: '&#x1002;',
             name: '重置密码',
             event: 'row-reset-pwd'
-        },
-        'row-top-layui': {
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe642;',
-            name: '置顶',
-            event: 'row-top'
-        },
-        'row-view-detail-layui': {
-            className: baseBtnClass + 'layui-btn-xs',
-            icon: '&#xe642;',
-            name: '查看数据',
-            event: 'row-view-detail'
         }
     };
 

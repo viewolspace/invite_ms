@@ -1,5 +1,5 @@
 /**
- * 客户管理api
+ * 抽奖记录查询api
  */
 var requireModules = [
     'base-url'
@@ -11,14 +11,14 @@ layui.define('base-url', function (exports) {
     var baseApi = layui['base-url'];
 
     var url = {
-        namespace: '../fuser/',
-        "fUserList": {
-            url: "fUserList.do",
+        namespace: '../lottery/',
+        "queryUserDetail": {
+            url: "queryUserDetail.do",
             type: "POST"
         }
     }
 
     var result = $.extend({}, baseApi, url);
 
-    exports('fuser-api', result);
+    exports('lottery-api', result);
 });
