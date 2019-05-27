@@ -47,8 +47,7 @@ public class LotteryController {
      */
     @RequestMapping(value = "/queryUserInvite", method = RequestMethod.POST)
     @ResponseBody
-    public GridBaseResponse queryUserInvite(@RequestParam(value = "uid", defaultValue = "0") int uid,
-                                            @RequestParam(value = "openId", defaultValue = "") String openId,
+    public GridBaseResponse queryUserInvite(@RequestParam(value = "openId", defaultValue = "") String openId,
                                             @RequestParam(value = "nickName", defaultValue = "") String nickName,
                                             @RequestParam(value = "inviteOpenId", defaultValue = "") String inviteOpenId,
                                             @RequestParam(value = "inviteNickName", defaultValue = "") String inviteNickName,
@@ -60,9 +59,6 @@ public class LotteryController {
         rs.setMsg("ok");
 
         UserInviteQuery query = new UserInviteQuery();
-        if (uid > 0) {
-            query.setUid(uid);
-        }
         query.setOpenId(openId);
         query.setNickName(nickName);
         query.setInviteOpenId(inviteOpenId);
@@ -94,8 +90,7 @@ public class LotteryController {
      */
     @RequestMapping(value = "/queryUserDetail", method = RequestMethod.POST)
     @ResponseBody
-    public GridBaseResponse queryUserDetail(@RequestParam(value = "uid", defaultValue = "0") int uid,
-                                            @RequestParam(value = "openId", defaultValue = "") String openId,
+    public GridBaseResponse queryUserDetail(@RequestParam(value = "openId", defaultValue = "") String openId,
                                             @RequestParam(value = "thirdId", defaultValue = "") String thirdId,
                                             @RequestParam(value = "prize", defaultValue = "0") int prize,
                                             @RequestParam(value = "nickName", defaultValue = "") String nickName,
@@ -107,9 +102,6 @@ public class LotteryController {
         rs.setMsg("ok");
 
         UserDetailQuery query = new UserDetailQuery();
-        if (uid > 0) {
-            query.setUid(uid);
-        }
         if (prize > 0) {
             query.setPrize(prize);
         }
@@ -149,12 +141,12 @@ public class LotteryController {
                 int success = 0;
                 for (String openId : openIdList) {
                     User user = userService.getUserByOpenId(openId);
-                    if(null == user){
+                    if (null == user) {
                         continue;
                     }
                     int count = userService.updateUserCommit(user.getUid());
-                    if(count>0){
-                        success ++;
+                    if (count > 0) {
+                        success++;
                     }
                 }
 

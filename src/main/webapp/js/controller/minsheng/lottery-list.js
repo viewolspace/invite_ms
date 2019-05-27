@@ -64,9 +64,9 @@ layui.use(requireModules, function (
                 , limits: [10, 50, 100, 200]
                 , cols: [[
                     {type: 'numbers'},
-                    {field: 'uid', title: '用户ID', width: 100},
+                    // {field: 'uid', title: '用户ID', width: 100},
                     {field: 'openId', title: '微信OpenId', width: 300},
-                    {field: 'thirdId', title: '第三方用户ID', width: 150},
+                    {field: 'thirdId', title: '用户ID', width: 150},
                     {field: 'nickName', title: '用户昵称', width: 200},
                     {field: 'prize', title: '奖品ID', width: 100},
                     {
