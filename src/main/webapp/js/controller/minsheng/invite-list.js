@@ -80,8 +80,8 @@ layui.use(requireModules, function (
                     {field: 'thirdId', title: '用户ID', width: 130},
                     {field: 'openId', title: '微信OpenId', width: 200},
                     {field: 'nickName', title: '用户昵称', width: 150},
-                    {field: 'inviteUid', title: '邀请用户ID', width: 100},
-                    {field: 'inviteThirdId', title: '邀请第三方用户ID', width: 150},
+                    // {field: 'inviteUid', title: '邀请用户ID', width: 100},
+                    {field: 'inviteThirdId', title: '邀请用户ID', width: 150},
                     {field: 'inviteOpenId', title: '邀请微信OpenId', width: 200},
                     {field: 'inviteNickName', title: '邀请用户昵称', width: 150},
                     {
