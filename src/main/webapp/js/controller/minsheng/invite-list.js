@@ -132,6 +132,9 @@ layui.use(requireModules, function (
             $('#search-btn').on('click', function () {
                 mainTable.reload({
                     where: MyController.getQueryCondition()
+                    ,page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
                 });
             });
 
