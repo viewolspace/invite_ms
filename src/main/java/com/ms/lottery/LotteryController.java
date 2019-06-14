@@ -92,7 +92,7 @@ public class LotteryController {
     @ResponseBody
     public GridBaseResponse queryUserDetail(@RequestParam(value = "openId", defaultValue = "") String openId,
                                             @RequestParam(value = "thirdId", defaultValue = "") String thirdId,
-                                            @RequestParam(value = "prize", defaultValue = "0") int prize,
+                                            @RequestParam(value = "prize", defaultValue = "-1") Integer prize,
                                             @RequestParam(value = "nickName", defaultValue = "") String nickName,
                                             @RequestParam(value = "page", defaultValue = "1") int page,
                                             @RequestParam(value = "limit", defaultValue = "10") int limit) {
@@ -102,7 +102,7 @@ public class LotteryController {
         rs.setMsg("ok");
 
         UserDetailQuery query = new UserDetailQuery();
-        if (prize > 0) {
+        if (prize >= 0) {
             query.setPrize(prize);
         }
         query.setOpenId(openId);

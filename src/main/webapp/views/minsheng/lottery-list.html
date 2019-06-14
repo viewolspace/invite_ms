@@ -36,10 +36,14 @@
             </div>
 
             <div class="layui-inline">
-                <label class="layui-form-label">奖品ID</label>
+                <label class="layui-form-label">是否中奖</label>
 
                 <div class="layui-input-inline">
-                    <input type="text" name="prize" id="prize" placeholder="请输入" autocomplete="off" class="layui-input">
+                    <select name="prize" id="prize">
+                        <option value="-1">全部</option>
+                        <option value="0">未中奖</option>
+                        <option value="1">已中奖</option>
+                    </select>
                 </div>
             </div>
 
@@ -72,7 +76,7 @@
 <script type="text/javascript" charset="utf8" src="../../frame/jquery-1.12.4.js"></script>
 <script type="text/javascript" charset="utf8" src="../../frame/moment.js"></script>
 <script type="text/javascript" charset="utf8" src="../../frame/form-srializeJSON.js"></script>
-<script type="text/javascript" charset="utf8" src="../../js/controller/minsheng/lottery-list.js"></script>
+<script type="text/javascript" charset="utf8" src="../../js/controller/minsheng/lottery-list.js?v=10"></script>
 </body>
 
 </html>

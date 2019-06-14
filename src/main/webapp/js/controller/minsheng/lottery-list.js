@@ -68,7 +68,15 @@ layui.use(requireModules, function (
                     {field: 'openId', title: '微信OpenId', width: 300},
                     {field: 'thirdId', title: '用户ID', width: 150},
                     {field: 'nickName', title: '用户昵称', width: 200},
-                    {field: 'prize', title: '奖品ID', width: 100},
+                    {
+                        field: 'prize', title: '是否中奖', width: 100, templet: function (d) {
+                            if (d.prize == 0) {
+                                return '<span>未中奖</span>';
+                            } else {
+                                return '<span>中奖</span>';
+                            }
+                        }
+                    },
                     {
                         field: 'cTime', title: '创建时间', width: 160, templet: function (d) {
                             return moment(d.cTime).format("YYYY-MM-DD HH:mm:ss");
@@ -87,6 +95,9 @@ layui.use(requireModules, function (
             $('#search-btn').on('click', function () {
                 mainTable.reload({
                     where: MyController.getQueryCondition()
+                    ,page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
                 });
             });
         }
