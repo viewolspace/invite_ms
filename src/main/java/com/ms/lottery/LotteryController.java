@@ -145,7 +145,7 @@ public class LotteryController {
                         continue;
                     }
                     int count = userService.updateUserCommit(user.getUid());
-                    if (count > 0) {
+                    if (count == 2) {
                         success++;
                     }
                 }
